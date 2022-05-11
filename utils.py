@@ -41,7 +41,7 @@ def takeCommand():
     return query
 
 
-if __name__ == "__main__":
+def start_task():
     clear = lambda: os.system("clear")
     clear()
     speak("Initializing AI Assistant...")
@@ -64,6 +64,8 @@ if __name__ == "__main__":
         exit()
     wish_me()
 
+
+def task_GUI():
     while True:
         query = takeCommand().lower()
         if "hello" in query:
