@@ -26,6 +26,7 @@ class Gui_Start(QMainWindow):
         self.gui.start_button.clicked.connect(self.startTask)
 
     def startTask(self):
+        
         self.gui.label1 = QtGui.QMovie("UI/assets/virtual-body.gif")
         self.gui.virtual_body.setMovie(self.gui.label1)
         self.gui.label1.start()
@@ -33,8 +34,22 @@ class Gui_Start(QMainWindow):
         self.gui.param_board.setMovie(self.gui.label2)
         self.gui.label2.start()
 
+        # timer = QTimer(self)
+        # timer.timeout.connect(self.showTimeLiver)
+        # timer.start(999)
+
         startExe.start()
-    
+
+    def showTimeLive(self):
+        # time = QTime.currentTime().toString()
+        # date = QDate.currentDate().toString()
+        # label_time = "Time: " + time
+        # label_date = "Date: " + date
+
+        # self.gui.text_time.setText(label_time)
+        # self.gui.text_date.setText(label_date)
+        pass
+
 Gui_App = QApplication(sys.argv)
 AI_Gui = Gui_Start()
 AI_Gui.show()
