@@ -8,3 +8,4 @@ pyqt5-tools==5.15.4.3.2
 # Install pyaudio using:
 # conda install -n VIRTUALENV_NAME -c anaconda pyaudio
 pyaudio==0.2.11
+mac-say==2020.12.3
