@@ -26,11 +26,11 @@ class Gui_Start(QMainWindow):
         self.gui.start_button.clicked.connect(self.startTask)
 
     def startTask(self):
-        self.gui.label1 = QtGui.QMovie("UI/assets/core.gif")
-        self.gui.Gif_core.setMovie(self.gui.label1)
+        self.gui.label1 = QtGui.QMovie("UI/assets/virtual-body.gif")
+        self.gui.virtual_body.setMovie(self.gui.label1)
         self.gui.label1.start()
-        self.gui.label2 = QtGui.QMovie("UI/assets/ai-face.gif")
-        self.gui.ai_face.setMovie(self.gui.label2)
+        self.gui.label2 = QtGui.QMovie("UI/assets/chart.gif")
+        self.gui.param_board.setMovie(self.gui.label2)
         self.gui.label2.start()
 
         startExe.start()

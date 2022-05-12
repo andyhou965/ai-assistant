@@ -30,49 +30,30 @@
      <string>TextLabel</string>
     </property>
    </widget>
-   <widget class="QLabel" name="core_frame">
+   <widget class="QLabel" name="param_board">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>120</y>
+      <x>720</x>
+      <y>150</y>
       <width>691</width>
-      <height>381</height>
+      <height>241</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>assets/tuse.png</pixmap>
+     <pixmap>assets/chart.gif</pixmap>
     </property>
     <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Gif_core">
-    <property name="geometry">
-     <rect>
-      <x>810</x>
-      <y>220</y>
-      <width>331</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>assets/core.gif</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="menu">
     <property name="geometry">
      <rect>
-      <x>910</x>
-      <y>20</y>
+      <x>530</x>
+      <y>10</y>
       <width>411</width>
       <height>51</height>
      </rect>
@@ -87,20 +68,20 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="ai_face">
+   <widget class="QLabel" name="virtual_body">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>60</y>
-      <width>611</width>
-      <height>481</height>
+      <x>20</x>
+      <y>110</y>
+      <width>681</width>
+      <height>771</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>assets/ai-face.gif</pixmap>
+     <pixmap>assets/virtual-body.gif</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -109,9 +90,9 @@
    <widget class="QLabel" name="code_panel">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>430</y>
-      <width>1371</width>
+      <x>660</x>
+      <y>350</y>
+      <width>781</width>
       <height>641</height>
      </rect>
     </property>
@@ -128,32 +109,40 @@
    <widget class="QPushButton" name="start_button">
     <property name="geometry">
      <rect>
-      <x>1350</x>
-      <y>21</y>
-      <width>61</width>
+      <x>30</x>
+      <y>10</y>
+      <width>81</width>
       <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(33, 255, 220, 204);
-border-radius: 6px;
-color: rgb(0,0,0);
+     <string notr="true">background-color: Transparent;
+border-radius: none;
 font-weight: bold;
-selection-background-color: rgba(14, 121, 255, 204);
-selection-color: rgb(255, 255, 255);
+color: rgb(22, 178, 214);
+font: 15pt &quot;Arial&quot;;
 </string>
     </property>
     <property name="text">
      <string>START</string>
     </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>assets/power_button.png</normaloff>assets/power_button.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
    </widget>
    <zorder>main_bg</zorder>
    <zorder>start_button</zorder>
-   <zorder>Gif_core</zorder>
-   <zorder>core_frame</zorder>
    <zorder>menu</zorder>
-   <zorder>ai_face</zorder>
+   <zorder>virtual_body</zorder>
    <zorder>code_panel</zorder>
+   <zorder>param_board</zorder>
   </widget>
  </widget>
  <resources/>
