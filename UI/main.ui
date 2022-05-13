@@ -137,12 +137,30 @@ font: 15pt &quot;Arial&quot;;
      </size>
     </property>
    </widget>
+   <widget class="QTextBrowser" name="code_browser">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>560</y>
+      <width>511</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+font: 15pt &quot;Arial&quot;;
+font-weight: bold;
+color: rgb(248, 182, 26);
+</string>
+    </property>
+   </widget>
    <zorder>main_bg</zorder>
    <zorder>start_button</zorder>
    <zorder>menu</zorder>
    <zorder>virtual_body</zorder>
    <zorder>code_panel</zorder>
    <zorder>param_board</zorder>
+   <zorder>code_browser</zorder>
   </widget>
  </widget>
  <resources/>

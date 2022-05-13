@@ -1,5 +1,5 @@
 import sys
-from ui import Ui_AI_Assistant
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QMovie
@@ -7,24 +7,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt, QTimer, QTime, QDate
 from PyQt5.uic import loadUiType
-# from utils import *
-# import pyttsx3
-import mac_say
-import datetime
-import speech_recognition as sr
-import os
-import requests
-
-# engine = pyttsx3.init()
-# voices = engine.getProperty("voices")
-# engine.setProperty("voice", voices[0].id)
-# engine.setProperty("rate", 170)
-
-def speak(audio):
-    mac_say.say([audio, "-v", "Alex"])
-    # engine.say(audio)
-    # engine.runAndWait()
-
+from utils import *
 
 class MainThread(QThread):
     def __init__(self):
@@ -34,72 +17,43 @@ class MainThread(QThread):
         self.main()
 
     def main(self):
-        speak("Hello, I am AI Assistant")
-        while True:
-            self.query = self.takeCommand().lower()
-            if "hello" in self.query:
-                speak("Hello Sir")
-                speak("I am your digital assistant. How may I help you?")
+        start_task()
+        task_GUI()
 
-            elif "how are you" in self.query:
-                speak("my AI mood levels are always positive")
-                speak("how are you sir")
+# Redirect stdout to QTextBrowser
+class EmittingStr(QtCore.QObject):
+    textWritten = QtCore.pyqtSignal(str)
+    def write(self, text):
+        self.textWritten.emit(str(text))
 
-            elif "fine" in self.query:
-                speak("It's good to know that you are fine")
-
-            elif "none" in self.query:
-                speak("unable to recognize your voice")
-
-
-    def wish_me(self):
-        hour = int(datetime.datetime.now().hour)
-        if hour >= 0 and hour < 12:
-            speak("good morning sir")
-        elif hour >= 12 and hour < 16:
-            speak("good afternoon sir")
-        else:
-            speak("good evening sir")
-
-
-    def takeCommand(self):
-        r = sr.Recognizer()
-        with sr.Microphone() as source:
-            print("Listening...")
-            r.pause_threshold = 1
-            audio = r.listen(source)
-        try:
-            print("recognising...")
-            query = r.recognize_google(audio, language='eng-in')
-            print(f"user said: {query}\n")
-        except Exception as e:
-            print(e)
-            print("Unable to recognize your voice")
-            return "None"
-        return query    
-
-
-
-class Gui_Start(QMainWindow):
+FROM_MAIN,_ = loadUiType(os.path.join(os.path.dirname(__file__),"UI/main.ui"))
+class Gui_Start(QMainWindow, FROM_MAIN):
     def __init__(self):
         super().__init__()
-        self.gui = Ui_AI_Assistant()
-        self.gui.setupUi(self)
-       
-        self.gui.start_button.clicked.connect(self.startTask)
+        self.setupUi(self)
+
+        # Redirect stdout to QTextBrowser
+        sys.stdout = EmittingStr(textWritten=self.outputWritten)
+        sys.stderr = EmittingStr(textWritten=self.outputWritten)
+
+        self.start_button.clicked.connect(self.startTask)
+
+    def outputWritten(self, text):
+        cursor = self.code_browser.textCursor()
+        cursor.movePosition(QtGui.QTextCursor.End)
+        cursor.insertText(text)
+        self.code_browser.setTextCursor(cursor)
+        self.code_browser.ensureCursorVisible()
 
     def startTask(self):
-        self.gui.label1 = QtGui.QMovie("UI/assets/virtual-body.gif")
-        self.gui.virtual_body.setMovie(self.gui.label1)
-        self.gui.label1.start()
+        self.label1 = QtGui.QMovie("UI/assets/virtual-body.gif")
+        self.virtual_body.setMovie(self.label1)
+        self.label1.start()
 
-        self.gui.label2 = QtGui.QMovie("UI/assets/chart.gif")
-        self.gui.param_board.setMovie(self.gui.label2)
-        self.gui.label2.start()
+        self.label2 = QtGui.QMovie("UI/assets/chart.gif")
+        self.param_board.setMovie(self.label2)
+        self.label2.start()
 
-        # timer = QTimer(self)
-        # timer.timeout.connect(self.showTimeLiver)
-        # timer.start(999)
         self.startExe = MainThread()
         self.startExe.start()
 
@@ -113,7 +67,8 @@ class Gui_Start(QMainWindow):
         # self.gui.text_date.setText(label_date)
         pass
 
-Gui_App = QApplication(sys.argv)
-AI_Gui = Gui_Start()
-AI_Gui.show()
-exit(Gui_App.exec_())
+if __name__ == "__main__":
+    Gui_App = QApplication(sys.argv)
+    AI_Gui = Gui_Start()
+    AI_Gui.show()
+    exit(Gui_App.exec_())
