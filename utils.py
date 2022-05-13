@@ -29,7 +29,7 @@ def takeCommand():
         audio = r.listen(source)
     try:
         print("recognising...")
-        query = r.recognize_google(audio, language='eng-hk')
+        query = r.recognize_google(audio, language="en-HK")
         print(f"You said: {query}\n")
     except Exception as e:
         # print(e)
@@ -67,7 +67,7 @@ def start_task():
 def task_GUI():
     # clear = lambda: os.system("clear")
     # clear()
-    print("\n******** AI Assistant Started ********\n")
+    print("\n************* AI Assistant Started *************\n")
     wish_me()
     while True:
         query = takeCommand().lower()
