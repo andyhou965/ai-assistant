@@ -4,6 +4,12 @@ import os
 import requests
 import mac_say
 import time
+import webbrowser
+import re
+
+person_website = "http://localhost:8080"
+
+config = {"personal_website": person_website, "about_me": person_website+"#about"}
 
 def speak(audio):
     mac_say.say([audio, "-v", "Alex"])
@@ -71,16 +77,25 @@ def task_GUI():
     wish_me()
     while True:
         query = takeCommand().lower()
-        if "hello" in query:
+        if re.match("^hello$", query):
             print_speak("Hello Sir")
             print_speak("I am your digital assistant. How may I help you?")
-
         elif "how are you" in query:
             print_speak("My AI mood levels are always positive.")
             print_speak("How are you sir?")
-
-        elif "fine" in query:
+        elif "i'm fine" in query:
             print_speak("It's good to know that you are fine.")
+
+        # Open web browser
+        elif re.match(".*open .* personal website.*", query):
+            url = "https://www.google.com"
+            webbrowser.open_new_tab(url)
+        elif re.match(".*open about me.*", query):
+            url = "https://www.google.com/search?q=covid+19"
+            webbrowser.open(url)
+        elif re.match(".*open my project[s]?.*", query):
+            url = "https://www.baidu.com"
+            webbrowser.open(url)
 
         elif "none" in query:
             pass

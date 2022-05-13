@@ -17,7 +17,7 @@ class MainThread(QThread):
         self.main()
 
     def main(self):
-        start_task()
+        # start_task()
         task_GUI()
 
 # Redirect stdout to QTextBrowser
