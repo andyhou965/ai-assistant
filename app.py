@@ -46,7 +46,7 @@ class Gui_Start(QMainWindow, FROM_MAIN):
         self.code_browser.ensureCursorVisible()
 
     def startTask(self):
-        self.label1 = QtGui.QMovie("UI/assets/virtual-body.gif")
+        self.label1 = QtGui.QMovie("UI/assets/olivia-black.gif")
         self.virtual_body.setMovie(self.label1)
         self.label1.start()
 

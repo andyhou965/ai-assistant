@@ -73,6 +73,7 @@ def start_task():
 def task_GUI():
     # clear = lambda: os.system("clear")
     # clear()
+    start_task()
     print("\n************* AI Assistant Started *************\n")
     wish_me()
     while True:
@@ -81,20 +82,19 @@ def task_GUI():
             print_speak("Hello Sir")
             print_speak("I am your digital assistant. How may I help you?")
         elif "how are you" in query:
-            print_speak("My AI mood levels are always positive.")
-            print_speak("How are you sir?")
+            print_speak("My AI mood levels are always positive. How are you sir?")
         elif "i'm fine" in query:
             print_speak("It's good to know that you are fine.")
 
         # Open web browser
         elif re.match(".*open .* personal website.*", query):
-            url = "https://www.google.com"
+            url = "http://127.0.0.1:3000"
             webbrowser.open_new_tab(url)
-        elif re.match(".*open about me.*", query):
-            url = "https://www.google.com/search?q=covid+19"
+        elif re.match(".*open .* price optimization project[s]?.*", query):
+            url = "http://127.0.0.1:8002"
             webbrowser.open(url)
-        elif re.match(".*open my project[s]?.*", query):
-            url = "https://www.baidu.com"
+        elif re.match(".*open .* customer insight project[s]?.*", query):
+            url = "http://127.0.0.1:8003"
             webbrowser.open(url)
 
         elif "none" in query:

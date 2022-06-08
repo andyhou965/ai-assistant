@@ -71,9 +71,9 @@
    <widget class="QLabel" name="virtual_body">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>110</y>
-      <width>681</width>
+      <x>-10</x>
+      <y>80</y>
+      <width>751</width>
       <height>771</height>
      </rect>
     </property>
@@ -81,7 +81,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>assets/virtual-body.gif</pixmap>
+     <pixmap>assets/olivia-black.gif</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
