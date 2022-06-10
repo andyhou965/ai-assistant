@@ -9,10 +9,6 @@ import re
 import psutil
 from wolframalpha import Client
 
-person_website = "http://localhost:8080"
-
-config = {"personal_website": person_website, "about_me": person_website+"#about"}
-
 def speak(audio):
     mac_say.say([audio, "-v", "Alex"])
     os.system('kill `pgrep speechsynthesisd`')
